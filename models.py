@@ -6,6 +6,7 @@ VALID_CMD_COMMANDS = ('filter', 'unique', 'limit', 'map', 'sort')
 class RequestSchema(Schema):
 	cmd = fields.Str(required=True)
 	value = fields.Str()
+	file_name = fields.Str()
 
 	@validates_schema
 	def check_all_cmd_valid(self, values, *args, **kwargs):

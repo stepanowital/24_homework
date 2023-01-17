@@ -6,8 +6,6 @@ from models import BatchRequestSchema
 main_bp = Blueprint('main', __name__)
 
 
-FILE_NAME = 'data/apache_logs.txt'
-
 @main_bp.route("/perform_query", methods=['POST'])
 def perform_query():
 	# TODO Принять запрос от пользователя
@@ -23,11 +21,12 @@ def perform_query():
 	result = ''
 
 	for query in validated_data['queries']:
-
+		if query.get('file_name'):
+			file_name = "data/" + query['file_name']
 		result = build_query(
 			cmd=query['cmd'],
 			value=query['value'],
-			file_name=FILE_NAME,
+			file_name=file_name,
 			data=result,
 		)
 
