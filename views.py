@@ -1,3 +1,5 @@
+from typing import Union
+
 from flask import Blueprint, request, jsonify, abort, Response
 from marshmallow import ValidationError
 from builder import build_query
@@ -27,7 +29,7 @@ def perform_query() -> Response:
 		return jsonify(error.messages)
 	# TODO Выполнить запрос
 
-	result: str = ''
+	result: Union[str, list] = ''
 	file_path: Path = DATA_DIR
 
 	for query in validated_data['queries']:
@@ -35,7 +37,7 @@ def perform_query() -> Response:
 			file_path = DATA_DIR.joinpath(query['file_name'])
 		if not file_path.is_file():
 			abort(400, 'File not exists')
-		result: list = build_query(
+		result = build_query(
 			cmd=query['cmd'],
 			value=query['value'],
 			file_name=file_path,

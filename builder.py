@@ -11,7 +11,6 @@ CMD_TO_FUNCTIONS: dict = {
 	'sort': sort_query,
 	'regex': regex_query
 }
-# print(type())
 
 
 def read_file(file_name: Path) -> Iterator[str]:
@@ -24,6 +23,6 @@ def build_query(cmd: str, value: str, file_name: Path, data: Union[str, list]) -
 	if data == '':
 		prepared_data: Iterable[str] = read_file(file_name)
 	else:
-		prepared_data: Iterable[str] = data
+		prepared_data = data
 
 	return list(CMD_TO_FUNCTIONS[cmd](value=value, data=prepared_data))

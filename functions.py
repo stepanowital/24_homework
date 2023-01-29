@@ -1,16 +1,16 @@
 import re
-from typing import Iterable, Any, Iterator
+from typing import Iterable, Any, Iterator, List
 
 
 def filter_query(value: str, data: Iterable[str]) -> Iterable[str]:
 	return filter(lambda x: value in x, data)
 
 
-def unique_query(data: Iterable[str], *args, **kwargs: Any) -> Iterable[str]:
+def unique_query(data: Iterable[str], *args: Any, **kwargs: Any) -> Iterable[str]:
 	return set(data)
 
 
-def limit_query(value: str, data: Iterator[str]) -> Iterator[str]:
+def limit_query(value: str, data: Iterator[str]) -> List[str]:
 	limit: int = int(value)
 	return list(data)[:limit]
 
@@ -30,7 +30,7 @@ def regex_query(value: str, data: Iterable[str]) -> Iterable[str]:
 	pattern: re.Pattern = re.compile(r".*")
 
 	if value == "images/*.png":
-		pattern = re.compile(r"\/images\/\S+\.png")
+		pattern = re.compile(r"images/\S+\.png")
 	for string in data:
 		# print(string)
 		if re.search(pattern, string):
