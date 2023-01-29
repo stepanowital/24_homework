@@ -10,3 +10,4 @@
 
 # images\/\S+\.png
 # images/*.png
+# "^(.+).(png|jpeg)"

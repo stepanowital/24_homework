@@ -27,12 +27,9 @@ def sort_query(value: str, data: Iterable[str]) -> Iterable[str]:
 
 def regex_query(value: str, data: Iterable[str]) -> Iterable[str]:
 	res: list = []
-	pattern: re.Pattern = re.compile(r".*")
+	pattern: re.Pattern = re.compile(value)
 
-	if value == "images/*.png":
-		pattern = re.compile(r"images/\S+\.png")
 	for string in data:
-		# print(string)
 		if re.search(pattern, string):
 			res.append(string)
 	return res
