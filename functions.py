@@ -22,3 +22,9 @@ def map_query(value, data):
 def sort_query(value, data):
 	reverse = value == "desc"
 	return sorted(data, reverse=reverse)
+
+
+def regex_query(value, data):
+	if value == "images/*.png":
+		print(value)
+	return data
