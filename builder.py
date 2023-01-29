@@ -16,10 +16,8 @@ def read_file(file_name: str):
 
 
 def build_query(cmd: str, value: str, file_name: str, data):
-	# print(file_name)
 	if data == '':
 		prepared_data = read_file(file_name)
-
 	else:
 		prepared_data = data
 

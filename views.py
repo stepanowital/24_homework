@@ -6,6 +6,10 @@ from models import BatchRequestSchema
 main_bp = Blueprint('main', __name__)
 
 
+# нужно взять код из предыдущего ДЗ
+# добавить команду regex
+# добавить типизацию в проект, чтобы проходила утилиту mypy app.py
+
 @main_bp.route("/perform_query", methods=['POST'])
 def perform_query():
 	# TODO Принять запрос от пользователя
