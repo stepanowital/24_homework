@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Optional, Any
 
 from flask import Blueprint, request, jsonify, abort, Response
 from marshmallow import ValidationError
@@ -20,7 +20,8 @@ DATA_DIR: Path = BASE_DIR.joinpath('data')
 @main_bp.route("/perform_query", methods=['POST'])
 def perform_query() -> Response:
 	# TODO Принять запрос от пользователя
-	data: Union[dict, None] = request.json
+
+	data: Optional[Any] = request.json
 
 	# TODO Обработать запрос, валидировать значения
 	try:
