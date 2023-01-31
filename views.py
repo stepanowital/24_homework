@@ -20,7 +20,7 @@ DATA_DIR: Path = BASE_DIR.joinpath('data')
 @main_bp.route("/perform_query", methods=['POST'])
 def perform_query() -> Response:
 	# TODO Принять запрос от пользователя
-	data: dict = request.json
+	data: Union[dict, None] = request.json
 
 	# TODO Обработать запрос, валидировать значения
 	try:
